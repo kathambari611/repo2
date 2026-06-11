@@ -1,0 +1,30 @@
+---
+- name: Backup Config of Cisco Router
+  hosts: Routers
+  gather_facts: no
+
+  tasks:
+    - name: Backup running configuration
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: running_config_output
+
+    - name: Display running configuration
+      debug:
+        var: running_config_output.stdout
+
+    - name : Check if backup directory exists else create it
+      ansible.builtin.file:
+        path: "/home/student/Documents/backup"
+        state: directory
+
+    - name: Create backup file for the device
+      ansible.builtin.file:
+        path: "/home/student/Documents/backup/{{ inventory_hostname }}_running_config.txt"
+        state: touch
+
+    - name: Write running configuration to backup file
+      ansible.builtin.copy:
+        content: "{{ running_config_output.stdout[0] }}"
+        dest: "/home/student/Documents/backup/{{ inventory_hostname }}_running_config.txt"
