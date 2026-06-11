@@ -1,0 +1,5 @@
+Timestamp,Device,Site,IP Address,Status,Message
+2026-06-11 17:04:15,R1,192.168.10.1,SUCCESS,Connected and command executed successfully
+2026-06-11 17:04:16,R2,192.168.10.2,SUCCESS,Connected and command executed successfully
+2026-06-11 17:04:18,R3,192.168.10.3,SUCCESS,Connected and command executed successfully
+2026-06-11 17:04:21,R4,192.168.10.4,FAILED,Connection Timed Out
