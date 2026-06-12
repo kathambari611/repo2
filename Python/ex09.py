@@ -13,7 +13,7 @@ with open("Python/inventory08.json") as f:
     inventory = json.load(f)
 
 # CSV report file
-csv_file = "connection_report.csv"
+csv_file = "Python/connection_report.csv"
 
 with open(csv_file, mode="w", newline="") as report:
     writer = csv.writer(report)
@@ -67,6 +67,7 @@ with open(csv_file, mode="w", newline="") as report:
             print(f"[ERROR] {name}: {e}")
 
         finally:
+            print("Finally block executed")
             writer.writerow([
                 datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 name,
